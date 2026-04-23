@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: grievance_mongodb
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_DATABASE: grievance_system
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - grievance_network
+
+volumes:
+  mongodb_data:
+
+networks:
+  grievance_network:
+    driver: bridge
